@@ -1,0 +1,14 @@
+<div class="panel panel-success" *ngIf="message">
+  <div class="panel-heading">
+    <h3 class="panel-title">{{message.subject}}</h3>
+  </div>
+  <div class="panel-body">
+    <h4>{{message.body}}</h4>
+    <p class="small text-muted pull-right">
+      <strong>From:</strong> {{message.from}}
+      <strong>To:</strong> {{message.to}}<br />
+      <strong>Sent on:</strong> {{(message.createdOn | amFromUnix) | amDateFormat:'DD MMM YYYY HH:mm'}}
+    </p>
+
+  </div>
+</div>

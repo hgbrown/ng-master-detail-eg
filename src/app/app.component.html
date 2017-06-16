@@ -1,11 +1,4 @@
 <div class="container">
-  <h1>{{title}}</h1>
-
-  <alert type="success">Last updated: {{myDate | amTimeAgo:true}}</alert>
-
-  <div style="width: 202px;">
-    <ag-grid-angular #agGrid style="width: 100%; height: 108px;" class="ag-fresh" [gridOptions]="gridOptions"></ag-grid-angular>
-  </div>
-
+  <router-outlet></router-outlet>
 </div>
 

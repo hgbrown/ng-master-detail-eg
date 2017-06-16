@@ -1,0 +1,31 @@
+<div *ngIf="messages; else noMessagesTpl">
+
+  <div class="panel panel-success">
+    <div class="panel-heading">
+      <h3 class="panel-title">You have <span class="badge">{{messages.length}}</span> messages</h3>
+    </div>
+    <div class="panel-body">
+      <table class="table table-condensed table-hover">
+        <tbody>
+        <tr *ngFor="let m of messages">
+          <td>
+
+            <span [ngClass]="{'unread' : !m.read}">{{m.subject}}</span>  <span class="pull-right small">From: {{m.from}}</span>
+            <p class="small text-muted">
+              {{(m.createdOn | amFromUnix) | amTimeAgo}}
+              <a (click)="selectMessage(m)" class="btn btn-success btn-sm pull-right">Read</a>
+            </p>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="panel-footer small text-muted">
+      <strong>{{countUnread(messages)}}</strong> unread messages.
+    </div>
+  </div>
+</div>
+
+<ng-template #noMessagesTpl>
+  <alert type="info"><span class="glyphicon glyphicon-refresh"></span> Loading Messages to display ... </alert>
+</ng-template>

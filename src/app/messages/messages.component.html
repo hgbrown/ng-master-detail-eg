@@ -1,0 +1,19 @@
+<div *ngIf="messageDetail$ | async as messageDetail; else messageListTpl">
+
+  <div class="row">
+    <div class="col-md-12" style="margin: 10px 0;">
+      <button type="button" class="btn btn-success" (click)="backToMessageList()">
+        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span> Back
+      </button>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <app-message-detail [message]="messageDetail"></app-message-detail>
+    </div>
+  </div>
+</div>
+
+<ng-template #messageListTpl>
+  <app-message-list [messages]="messages$ | async" (selectedMessage)="selectMessage($event)"></app-message-list>
+</ng-template>
